@@ -11,5 +11,4 @@ export class TranslateHttpLoader implements TranslateLoader {
    return this.http.get(`${this.baseUrl}/${lang}`);
 }
     
-
 }
