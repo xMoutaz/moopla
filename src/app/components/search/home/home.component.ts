@@ -6,15 +6,16 @@ import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import * as mapboxgl from 'mapbox-gl';
 
 @Component({
-  selector: 'app-for-sale',
-  templateUrl: './for-sale.component.html',
-  styleUrls: ['./for-sale.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class ForSaleComponent implements OnInit {
+export class HomeComponent implements OnInit {
   
   geoCoder: any;
   searchFormGroup: FormGroup;
   searchInput: any;
+  advancedSearchToogle = false;
 
   constructor(private _formBuilder: FormBuilder, private router: Router,private searchInitialInputsService: SearchInitialInputsService) { }
 

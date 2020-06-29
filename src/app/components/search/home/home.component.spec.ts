@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForSaleComponent } from './for-sale.component';
+import { ForSaleComponent } from './home.component';
 
 describe('ForSaleComponent', () => {
   let component: ForSaleComponent;

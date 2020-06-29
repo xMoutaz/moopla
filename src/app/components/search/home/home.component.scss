@@ -1,0 +1,80 @@
+
+
+.panel{
+    margin-top: 66px;
+    margin-bottom: 65px;
+}
+
+#sloganHolder{
+    height: 100px;
+    width: 95%;
+    background-color: #8c0032d9;
+    position: absolute;
+    top: +240px;
+    border-radius: .25rem;
+    display: flex;
+    align-items: center;
+}
+
+.mainImage{
+    background-image: url("~/assets/hero-first-load.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.control-label{
+    font-weight: bold;
+    display: block;
+}
+#sloganHolder h1{
+    font-family: 'Lato';
+    font-size: 34px;
+    color: white;
+    padding-left: 6%;
+}
+.searchBtn{
+    /*border-radius: 3rem;*/
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*background-color: mat-color($mat-pink);*/
+}
+.browse-property-holder{
+    height:120px;
+    align-items: center;
+}
+.property-card{
+    height: 320px;
+    width:295px;
+    margin-top: 20px;
+    border: solid 1px black;
+    border-radius: 0.1rem;
+    border-radius: 0.3rem;
+}
+.property-selection-holder{
+    padding-bottom: 60px;
+}
+.property-selection-holder .row{
+    justify-content: space-around;
+}
+.property-card.cityList{
+    border:none;
+    height: auto;
+}
+.browse-property{
+    background-color: rgba(194,24,91,0.05);
+}
+.blog{
+    width:400px;
+}
+.blog .property-card{
+    width:100%;
+}
+.mat-tab-body-content{
+    overflow: hidden;
+}
+.searchArrow{
+    position: relative;
+    top:7px;
+    color: grey;
+    left: 15px;
+}

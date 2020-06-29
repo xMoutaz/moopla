@@ -1,0 +1,51 @@
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .mat-toolbar-single-row {
+    height: 144px;
+}
+
+#toolBar{
+    height:70px;
+    align-items: center;
+}
+.signBtn{
+  margin: 5px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+.primary.btn{
+  border:solid 1px white;
+}
+.register-section{
+  height: 250px;
+  background-color: #F0F0F0;
+}
+.footer{
+  height:370px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.footer h5{
+  font-size: 20px;
+  border-bottom: 1px solid rgba(250,87,136,0.4);
+  padding-bottom: 8px;
+}
+.footer .menu{
+  height:75px;
+  margin-bottom:40px;
+}
+.footer .p-2{
+  margin-right:105px;
+}
+.registerBtn{
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}

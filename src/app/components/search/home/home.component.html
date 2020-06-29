@@ -1,0 +1,222 @@
+<!--<link href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css" />-->
+
+<div class="row mainImage">    
+    <div class="container">
+        <div class="row">
+            <div id="sloganHolder">
+                <h1>Search for your next home online</h1>
+            </div>
+            <div class="col-lg-5 panel panel-default offset-lg-6 searchComponent">
+                <div class="panel-body">
+                    <div class="card card-body bg-light">
+                        <h5>Search Properties for sale or to rent in Morocco</h5>
+                        <mat-tab-group mat-align-tabs="start">
+                            <mat-tab label="For Sale">
+                                <form [formGroup]="searchFormGroup" (ngSubmit)="searchForSale()">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div id="geocoder">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="form-group col-md-6 required">
+                                                <label class="control-label">Min Price</label>
+                                                <mat-form-field appearance="outline">
+                                                    <mat-select class="mdc-text-field--outlined" formControlName="minPrice" placeholder="No Min">
+                                                        <mat-option *ngFor="let price of searchInput.minPrices" [value]="price">
+                                                            {{price}} MAD
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label class="control-label">Max Price</label>
+                                                <mat-form-field appearance="outline">
+                                                    <mat-select formControlName="maxPrice" placeholder="No Max">
+                                                        <mat-option *ngFor="let price of searchInput.maxPrices" [value]="price">
+                                                            {{price}} MAD
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <label class="control-label">Property Type</label>
+                                                <mat-form-field appearance="outline">
+                                                    <mat-select formControlName="propertyType" placeholder="Show All">
+                                                        <mat-option *ngFor="let propertyType of searchInput.propertyTypes" [value]="propertyType">
+                                                            {{propertyType}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label class="control-label">Bedrooms</label>
+                                                <mat-form-field appearance="outline">
+                                                    <mat-select formControlName="bedrooms" placeholder="No Beds">
+                                                        <mat-option *ngFor="let bedroom of searchInput.bedrooms" [value]="bedroom">
+                                                        more than {{bedroom}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-md-6 required">
+                                                <label class="control-label">Distance from location</label>
+                                                <mat-form-field appearance="outline">
+                                                    <mat-select class="mdc-text-field--outlined" formControlName="minPrice" placeholder="This area only">
+                                                        <mat-option *ngFor="let price of searchInput.minPrices" [value]="price">
+                                                            {{price}} MAD
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-6 form-group"  *ngIf="advancedSearchToogle">
+                                                <label class="control-label">Added</label>
+                                                <mat-form-field appearance="outline">
+                                                    <mat-select formControlName="maxPrice" placeholder="Anytime">
+                                                        <mat-option *ngFor="let price of searchInput.maxPrices" [value]="price">
+                                                            {{price}} MAD
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="row" *ngIf="advancedSearchToogle">
+                                            <div class="form-group col-md-6 required">
+                                                <label class="control-label">Include</label>
+                                                <mat-checkbox formControlName="newHomes"  [(ngModel)]="test">New homes</mat-checkbox>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="float-left primary-color advanced-search">
+                                                    <a (click)="advancedSearchToogle = !advancedSearchToogle">
+                                                        <span *ngIf="!advancedSearchToogle">
+                                                            Advanced search
+                                                            <mat-icon class="searchArrow">keyboard_arrow_down</mat-icon>
+                                                        </span>
+                                                        <span *ngIf="advancedSearchToogle">
+                                                            Fewer Search Options
+                                                            <mat-icon class="searchArrow">keyboard_arrow_up</mat-icon>
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn searchBtn main-btns">{{'SEARCH' | translate}}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </mat-tab>
+                            <mat-tab label="For Rent"></mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row browse-property">
+    <div class="container">
+        <div class="row browse-property-holder">
+            <div class="col-sm">
+                <h4>Browse properties by city or town in Morocco</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm property-selection-holder">
+                <mat-tab-group mat-align-tabs="start">
+                    <mat-tab label="For Sale">
+                        <div class="row">
+                            <div class="property-card"></div>
+                            <div class="property-card"></div>
+                            <div class="property-card"></div>
+                            <div class="property-card"></div>
+                        </div>
+                        <div class="row">
+                            <div class="property-card"></div>
+                            <div class="property-card"></div>
+                            <div class="property-card"></div>
+                            <div class="property-card"></div>
+                        </div>
+                        <div class="row">
+                            <div class="property-card cityList">
+                                <ul>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                </ul>
+                            </div>
+                            <div class="property-card cityList">
+                                <ul>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                </ul>
+                            </div>
+                            <div class="property-card cityList">
+                                <ul>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                </ul>
+                            </div>
+                            <div class="property-card cityList">
+                                <ul>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                    <li><a>Properties for rent in Tetouan</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="For Rent">
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="container">
+        <div class="row browse-property-holder">
+            <div class="col-sm-12">
+                <h4>The latest property news in Morocco</h4>
+            </div>
+        </div>
+        <div class="row property-selection-holder justify-content-around">
+            <div class="blog">
+                <div class="property-card "></div>
+                <p>How to find a jewel in the heart of Casablanca</p>
+                <a class="primary-color">Read More</a>
+            </div>
+            <div class="blog">
+                <div class="property-card"></div>
+                <p>How will buying a property near to a Moroccan tourist 
+                    destination effect the property price in the long term?
+                    
+                    </p>
+                <a class="primary-color">Read More</a>
+            </div>
+            <div class="blog">
+                <div class="property-card"></div>
+                <p>Will leaving original period features maintain the help to value of the properrty?
+                </p>
+                <a class="primary-color">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
